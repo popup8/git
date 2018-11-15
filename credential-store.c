@@ -3,6 +3,7 @@
 #include "credential.h"
 #include "string-list.h"
 #include "parse-options.h"
+#include "config.h"
 
 #define PARSE_VERBOSE 0x01
 
@@ -179,6 +180,8 @@ int cmd_main(int argc, const char **argv)
 	};
 
 	umask(077);
+
+	git_config(git_default_config, NULL);
 
 	argc = parse_options(argc, (const char **)argv, NULL, options, usage, 0);
 	if (argc != 1)
